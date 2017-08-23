@@ -4,12 +4,22 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+
+    private List<MedicineItem> medicineItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +36,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        createRecyclerView();
     }
 
     @Override
@@ -48,5 +60,28 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * Creates a RecyclerView containing a name and a number
+     */
+    private void createRecyclerView() {
+        recyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        medicineItems = new ArrayList<>();
+
+        for(int i = 0; i<=10; i++) {
+            MedicineItem medicineItem = new MedicineItem(
+                    "Namn " + (i+1),
+                    ""+ (i+1)
+            );
+            medicineItems.add(medicineItem);
+        }
+
+        adapter = new MedicineAdapter(medicineItems);
+
+        recyclerView.setAdapter(adapter);
     }
 }
