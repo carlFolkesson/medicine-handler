@@ -21,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     private List<MedicineItem> medicineItems;
 
+    private int index = 4;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,8 +34,15 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();*/
+                MedicineItem medicineItem = new MedicineItem(
+                        "Medicin " + index,
+                        index
+                );
+                medicineItems.add(medicineItem);
+                index++;
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -72,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
         medicineItems = new ArrayList<>();
 
-        for(int i = 0; i<10; i++) {
+        for(int i = 0; i<3; i++) {
             MedicineItem medicineItem = new MedicineItem(
                     "Medicin " + (i+1),
                     (i+1)
