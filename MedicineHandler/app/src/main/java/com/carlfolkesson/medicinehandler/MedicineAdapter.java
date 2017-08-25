@@ -32,7 +32,8 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ViewHo
         MedicineItem medicineItem = medicineItems.get(position);
 
         holder.textViewName.setText(medicineItem.getName());
-        holder.textViewStock.setText(String.valueOf(medicineItem.getStock()));
+        String stockText = "Antal tabletter i lager: " + String.valueOf(medicineItem.getStock());
+        holder.textViewStock.setText(stockText);
     }
 
     @Override
