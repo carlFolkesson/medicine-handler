@@ -32,7 +32,7 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ViewHo
         MedicineItem medicineItem = medicineItems.get(position);
 
         holder.textViewName.setText(medicineItem.getName());
-        holder.textViewStock.setText(medicineItem.getAmount_in_stock());
+        holder.textViewStock.setText(String.valueOf(medicineItem.getStock()));
     }
 
     @Override
@@ -49,8 +49,7 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ViewHo
             super(itemView);
 
             textViewName = itemView.findViewById(R.id.name);
-            textViewStock = itemView.findViewById(R.id.amount_in_stock);
-
+            textViewStock = itemView.findViewById(R.id.stock);
         }
     }
 }

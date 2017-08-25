@@ -72,10 +72,10 @@ public class MainActivity extends AppCompatActivity {
 
         medicineItems = new ArrayList<>();
 
-        for(int i = 0; i<=10; i++) {
+        for(int i = 0; i<10; i++) {
             MedicineItem medicineItem = new MedicineItem(
                     "Namn " + (i+1),
-                    ""+ (i+1)
+                    (i+1)
             );
             medicineItems.add(medicineItem);
         }

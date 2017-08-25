@@ -7,18 +7,18 @@ package com.carlfolkesson.medicinehandler;
 public class MedicineItem {
 
     private String name;
-    private String amount_in_stock;
+    private int stock;
 
-    public MedicineItem(String name, String amount_in_stock) {
+    public MedicineItem(String name, int stock) {
         this.name = name;
-        this.amount_in_stock = amount_in_stock;
+        this.stock = stock;
     }
 
     public String getName() {
         return name;
     }
 
-    public String getAmount_in_stock() {
-        return amount_in_stock;
+    public int getStock() {
+        return stock;
     }
 }

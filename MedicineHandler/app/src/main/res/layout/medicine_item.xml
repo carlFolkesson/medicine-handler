@@ -21,7 +21,7 @@
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
             <TextView
-                android:id="@+id/amount_in_stock"
+                android:id="@+id/stock"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="50" />
