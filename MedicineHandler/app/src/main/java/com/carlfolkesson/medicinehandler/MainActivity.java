@@ -1,5 +1,6 @@
 package com.carlfolkesson.medicinehandler;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     private List<MedicineItem> medicineItems;
 
-    private int index = 4;
+    private int index = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,13 +37,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 /*Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();*/
-                MedicineItem medicineItem = new MedicineItem(
-                        "Medicin " + index,
-                        index
-                );
-                medicineItems.add(medicineItem);
-                index++;
-                adapter.notifyDataSetChanged();
+                Intent intent = new Intent("com.carlfolkesson.medicinehandler.AddNewMedicineActivity");
+                startActivityForResult(intent, 1);
             }
         });
 
@@ -50,8 +46,8 @@ public class MainActivity extends AppCompatActivity {
         fabRemove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(index > 1) {
-                    medicineItems.remove(index-2);
+                if(index > 0) {
+                    medicineItems.remove(index-1);
                     index--;
                     adapter.notifyDataSetChanged();
                 }
@@ -92,17 +88,32 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         medicineItems = new ArrayList<>();
-
-        for(int i = 0; i<3; i++) {
-            MedicineItem medicineItem = new MedicineItem(
-                    "Medicin " + (i+1),
-                    (i+1)
-            );
-            medicineItems.add(medicineItem);
-        }
-
         adapter = new MedicineAdapter(medicineItems);
-
         recyclerView.setAdapter(adapter);
+    }
+
+    /**
+     * Takes care off the result from an other activity
+     * @param requestCode the code the activity was called with
+     * @param resultCode if the activity exited as intended
+     * @param data the data sent back from the activity
+     */
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // If an new medicin was added
+        if (requestCode == 1) {
+            if(resultCode == RESULT_OK) {
+                String medicineName = data.getStringExtra("name");
+                int medicineStock = Integer.parseInt(data.getStringExtra("stock"));
+                MedicineItem medicineItem = new MedicineItem(
+                        medicineName,
+                        medicineStock
+                );
+                medicineItems.add(medicineItem);
+                index++;
+                adapter.notifyDataSetChanged();
+            }
+        }
     }
 }
