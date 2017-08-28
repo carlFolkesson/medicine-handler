@@ -1,4 +1,12 @@
 <resources>
     <string name="app_name">Medicine Handler</string>
     <string name="action_settings">Settings</string>
+
+    <string name="new_name_medicine">Namn på medicinen</string>
+    <string name="new_stock_medicine">Medicin i lager</string>
+    <string name="hint_number">Antal</string>
+    <string name="add_new_medicine_button">Lägg till medicin</string>
+    <string name="cancel_new_medicine_button">Avbryt</string>
+    <string name="new_dose_medicine">Daglig dos</string>
+    <string name="pills">Tabletter</string>
 </resources>

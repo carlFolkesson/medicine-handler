@@ -17,6 +17,7 @@ public class AddNewMedicineActivity extends AppCompatActivity {
 
         final EditText nameInput = (EditText)findViewById(R.id.nameInput);
         final EditText stockInput = (EditText)findViewById(R.id.stockInput);
+        final EditText doseInput = (EditText)findViewById(R.id.doseInput);
 
         // Takes care of what happens when the addButton is clicked
         Button addButton = (Button) findViewById(R.id.addMedicineButton);
@@ -26,15 +27,20 @@ public class AddNewMedicineActivity extends AppCompatActivity {
                 Intent intent = new Intent();
                 String nameInputText = nameInput.getText().toString();
                 String stockInputText = stockInput.getText().toString();
+                String doseInputText = doseInput.getText().toString();
                 if(nameInputText.equals("")) {
                     Snackbar.make(view, "Du måste ge medicinen ett namn", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 } else if(stockInputText.equals("")) {
                     Snackbar.make(view, "Du måste ange hur mycket av medicinen du har i lager", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
+                } else if(doseInputText.equals("")) {
+                    Snackbar.make(view, "Du måste ange hur mycket av medicinen du tar varje dag", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
                 } else {
                     intent.putExtra("name", nameInputText);
                     intent.putExtra("stock", stockInputText);
+                    intent.putExtra("dose", doseInputText);
                     setResult(RESULT_OK, intent);
                     finish();
                 }
