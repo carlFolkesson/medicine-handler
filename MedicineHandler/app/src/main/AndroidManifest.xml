@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddNewMedicineActivity">
+            android:name=".AddNewMedicineActivity"
+            android:label="@string/activity_new_medicine">
             <intent-filter>
                 <action android:name="com.carlfolkesson.medicinehandler.AddNewMedicineActivity" />
 
