@@ -34,6 +34,8 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ViewHo
         holder.textViewName.setText(medicineItem.getName());
         String stockText = "Antal tabletter i lager: " + String.valueOf(medicineItem.getStock());
         holder.textViewStock.setText(stockText);
+        String doseText = "Dos: " + String.valueOf(medicineItem.getDose() + " tabletter");
+        holder.textViewDose.setText(doseText);
     }
 
     @Override
@@ -42,15 +44,15 @@ public class MedicineAdapter extends RecyclerView.Adapter<MedicineAdapter.ViewHo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         public TextView textViewName;
         public TextView textViewStock;
+        public TextView textViewDose;
 
         public ViewHolder(View itemView) {
             super(itemView);
-
             textViewName = itemView.findViewById(R.id.name);
             textViewStock = itemView.findViewById(R.id.stock);
+            textViewDose = itemView.findViewById(R.id.dose);
         }
     }
 }

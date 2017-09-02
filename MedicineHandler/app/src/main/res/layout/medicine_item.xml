@@ -61,12 +61,12 @@
                 android:layout_marginTop="15dp"
                 app:buttonTint="@color/colorPrimary"
                 app:layout_constraintHorizontal_bias="0.255"
-                app:layout_constraintLeft_toRightOf="@+id/doseDisplay"
+                app:layout_constraintLeft_toRightOf="@+id/dose"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/name" />
 
             <TextView
-                android:id="@+id/doseDisplay"
+                android:id="@+id/dose"
                 android:layout_width="107dp"
                 android:layout_height="24dp"
                 android:layout_marginLeft="2dp"
